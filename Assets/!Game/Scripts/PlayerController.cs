@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
     {
         HandleMovement();
         ApplyGravity();
+
+        controller.Move(velocity);
     }
 
     private void HandleMovement()
@@ -68,7 +70,11 @@ public class PlayerController : MonoBehaviour
             );
         }
 
-        controller.Move(move * moveSpeed * Time.deltaTime);
+        // Original movement function
+        //controller.Move(move * moveSpeed * Time.deltaTime);
+
+        Vector3 newVelocity = move * moveSpeed * Time.deltaTime;
+        velocity = new Vector3(newVelocity.x, velocity.y, newVelocity.z);
     }
 
 
@@ -80,6 +86,6 @@ public class PlayerController : MonoBehaviour
         }
 
         velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        //controller.Move(velocity * Time.deltaTime);
     }
 }
