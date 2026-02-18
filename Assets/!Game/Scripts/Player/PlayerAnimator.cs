@@ -8,16 +8,16 @@ public class PlayerAnimator : MonoBehaviour
 
     [SerializeField] private Animator animator;
     
-    public CharacterController characterController;
+    private CharacterController characterController;
 
     private void Awake()
     {
+        characterController = GetComponent<CharacterController>();
     }
 
     private void Update()
     {
         UpdateAnimator(characterController.velocity);
-        Debug.Log(characterController.velocity);
     }
 
     private void UpdateAnimator(Vector3 velocity)
